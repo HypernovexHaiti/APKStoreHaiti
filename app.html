@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>App</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white p-6">
+
+<div id="app"></div>
+
+<script>
+const apps = {
+  elit: {
+    name: "ELIT PARYAJ",
+    desc: "Analyse football avec IA",
+    apk: "apps/elitparyaj.apk",
+    downloads: "39K+",
+    rating: "★★★★★"
+  },
+  kiskey: {
+    name: "EXAMPRO HAITI",
+    desc: "Assistant éducatif IA",
+    apk: "apps/kiskey_ai.apk",
+    downloads: "115K+",
+    rating: "★★★★★"
+  }
+};
+
+const params = new URLSearchParams(window.location.search);
+const key = params.get("app");
+const app = apps[key];
+
+if(app){
+document.getElementById("app").innerHTML = `
+<h1 class="text-3xl font-bold mb-2">${app.name}</h1>
+<p class="text-gray-400 mb-2">${app.desc}</p>
+
+<p class="mb-2">📥 ${app.downloads}</p>
+<p class="mb-6 text-yellow-400">${app.rating}</p>
+
+<a href="${app.apk}" download
+class="block bg-white text-black py-4 text-center rounded-xl font-bold">
+TELECHARGE APK
+</a>
+`;
+}else{
+document.getElementById("app").innerHTML = "App introuvable";
+}
+</script>
+
+</body>
+</html>
